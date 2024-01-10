@@ -8,14 +8,30 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var todos = TodosManager()
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("Todo List")
+                .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+            
+            List(todos.todos) { todo in
+                VStack(alignment: .leading) {
+                    Text(todo.title)
+                        .font(.headline)
+                    Text(todo.completed ? "Completed" : "Not Completed")
+                        .font(.subheadline)
+                }
+            }
+            
+            Button(action: {
+                todos.fetchTodos()
+            }) {
+                Text("Fetch todos")
+            }
+            .padding()
         }
-        .padding()
     }
 }
 

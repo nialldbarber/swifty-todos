@@ -13,8 +13,8 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Text("Todo List")
-                .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                .font(.title)
+                .fontWeight(.bold)
             
             List(todos.todos) { todo in
                 VStack(alignment: .leading) {
